@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Web Scraper</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="background-animation"></div>
+    
+    <div class="container">
+        <header>
+            <h1>Web Scraper Pro</h1>
+            <p>Extract data instantly with elegant precision.</p>
+        </header>
+
+        <main>
+            <div class="glass-card scraper-form">
+                <form id="scrapeForm">
+                    <div class="input-group">
+                        <label for="url">Target URL</label>
+                        <input type="url" id="url" name="url" placeholder="https://example.com" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="selector">CSS Selector (optional)</label>
+                        <input type="text" id="selector" name="selector" placeholder="e.g. h1, .article-title, div > p">
+                        <small>Leave empty to just fetch the page title.</small>
+                    </div>
+
+                    <button type="submit" id="submitBtn">
+                        <span class="btn-text">Scrape Data</span>
+                        <div class="loader" id="loader"></div>
+                    </button>
+                </form>
+            </div>
+
+            <div class="glass-card results-container" id="resultsCard" style="display: none;">
+                <div class="results-header">
+                    <h2>Extracted Data</h2>
+                    <span class="badge" id="resultCount">0 items</span>
+                </div>
+                <div class="results-content" id="resultsContent">
+                    <!-- Results will be injected here -->
+                </div>
+            </div>
+            
+            <div class="glass-card error-container" id="errorCard" style="display: none;">
+                <p id="errorMessage"></p>
+            </div>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
